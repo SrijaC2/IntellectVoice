@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntellectVoice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link type="image/png" sizes="16x16" rel="icon" href="https://img.icons8.com/glyph-neue/30/000000/audio-wave.png">
+    <style>
+        #popup {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #popup.hidden {
+            opacity: 0;
+        }
+
+        #popup.flex {
+            opacity: 1;
+        }
+
+        .dancing-script-head {
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .wittgenstein-title {
+            font-family: "Wittgenstein", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-800 text-gray-200">
+    <!-- Nav bar -->
+    <div>
+        <nav class="r flex bg-gray-900 text-white px-4 py-4  items-center fixed top-0 w-full z-50">
+            <img width="26" height="26" src="https://img.icons8.com/glyph-neue/30/FFFFFF/audio-wave.png"
+                alt="audio-wave" />
+            <h1 class="text-xl font-bold ml-2 wittgenstein-title italic ">IntellectVoice</h1>
+        </nav>
+    </div>
+
+    <div class=" font-bold container mx-auto flex h-screen pt-12">
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center">
+            <div class="flex flex-col space-y-4">
+
+                <!-- Upload pdf file -->
+                <form id="pdf-form" class="flex flex-col items-center space-y-4">
+                    <p class="dancing-script-head text-gold-100 font-bold text-2xl">
+                        Upload and Unlock
+                    </p>
+                    <p class="dancing-script-head text-gold-100 font-bold text-2xl">
+                        the insights within your PDFs
+                    </p>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="pdf-file"
+                            class="flex flex-col items-center justify-center w-full h-36 border-1 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-2">
+                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">PDF</p>
+
+                                <div id="file-details"
+                                    class="items-center flex  p-1 mb-2 bg-purple-200 hover:bg-purple-300 rounded hidden">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400" id="file-name">Hello.pdf</p>
+                                    <button onclick="removeFile()"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
+                                            y="0px" width="15" height="15" viewBox="0 0 30 30">
+                                            <path
+                                                d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z">
+                                            </path>
+                                        </svg></button>
+                                </div>
+                            </div>
+                            <input id="pdf-file" type="file" accept=".pdf" class="hidden"
+                                onchange="handleFileSelect(event)" />
+                        </label>
+                    </div>
+                    <button type="submit"
+                        class="bg-gray-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                        Submit
+                    </button>
+                </form>
+
+                <!-- Options -->
+                <div class="option flex space-x-2 hidden ">
+                    <button onclick="performAction('summarize')"
+                        class="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-2 px-4 rounded">Summarize</button>
+                    <button onclick="performAction('paraphrase')"
+                        class="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-2 px-4 rounded">Paraphrase</button>
+                    <button onclick="performAction('keywords')"
+                        class="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-2 px-4 rounded">Extract
+                        Keywords</button>
+                </div>
+
+                <!-- Chat with AI -->
+                <div class="option w-full max-w-md p-4 bg-gray-900 rounded shadow-lg hidden ">
+                    <label for="question-input" class="block text-sm font-semibold mb-2">Ask me:</label>
+                    <input type="text" id="question-input" name="question"
+                        class="w-full p-2 py-1.5 border rounded mb-2 text-sm text-gray-800"
+                        placeholder="Enter your question...">
+                    <button id="submit-button"
+                        class="w-full bg-gray-500 text-white py-1 px-4 rounded hover:bg-gray-700 focus:outline-none font-semibold">Submit</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Right output area -->
+        <div
+            class="w-full md:w-1/2 overflow-auto p-4 bg-gradient-to-r from-gray-900 to-gray-750 rounded shadow-md mt-4">
+            <label for="output" class="block text-gray-300 font-bold mb-2">Output:</label>
+            <textarea id="output" name="output" readonly
+                class="w-full p-2 border rounded h-64 bg-gray-600 text-gray-200 font-semibold text-sm">Hello</textarea>
+
+            <!-- Controls -->
+            <div class="mt-4 flex justify-between ">
+                <button onclick="playText()"
+                    class="text-sm font-semibold bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-2 rounded shadow hover:bg-gradient-to-r  hover:from-blue-700 hover:to-blue-800 flex items-center">
+                    <img width="20" height="20" src="https://img.icons8.com/sf-black-filled/64/FFFFFF/medium-volume.png"
+                        alt="medium-volume" />
+                    Play
+                </button>
+                <button id="pause-button" onclick="pauseText()"
+                    class="text-sm font-semibold bg-gradient-to-r from-yellow-700 to-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-gradient-to-r  hover:from-yellow-700 hover:to-yellow-800 flex items-center">
+                    <img width="20" height="20" src="https://img.icons8.com/sf-black-filled/64/FFFFFF/pause.png"
+                        alt="pause" />
+                    Pause
+                </button>
+                <button id="stop-button" onclick="stopText()"
+                    class="text-sm font-semibold bg-gradient-to-r from-red-700 to-red-500 text-white px-4 py-2 rounded shadow hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 flex items-center">
+                    <img width="20" height="20" src="https://img.icons8.com/sf-black-filled/64/FFFFFF/stop.png"
+                        alt="stop" />
+                    Stop
+                </button>
+                <form id="download-form" action="/download-audio" method="post">
+                    <input type="hidden" name="text" id="hidden-text">
+                    <button type="submit"
+                        class="bg-green-500 flex font-semibold text-white px-4 py-2 rounded shadow bg-gradient-to-r from-green-700 to-green-500  hover:bg-gradient-to-r  hover:from-green-700 hover:to-green-800 text-sm">
+                        <img width="22" height="22"
+                            src="https://img.icons8.com/sf-regular-filled/22/FFFFFF/download.png" alt="download" />
+                        Download </button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Notification -->
+    <div id="popup"
+        class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-300 z-50 w-full max-w-md">
+        <div class="flex justify-between items-center text-white">
+            <h2 class="text-xl font-bold">Notification</h2>
+            <button onclick="closePopup()" class="text-2xl">&times;</button>
+        </div>
+        <p id="popup-message" class="mt-4 text-gray-200 dancing-script-head font-bold text-lg"></p>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading-spinner" class="hidden fixed inset-0 bg-opacity-75 flex items-center justify-center z-50">
+        <svg class="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.964 7.964 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+            </path>
+        </svg>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.min.js"></script>
+
+    <script>
+        function showOptions() {
+            const options = document.getElementsByClassName('option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('pdf-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('pdf-file');
+            formData.append('pdf-file', fileInput.files[0]);
+
+            const response = await fetch('/process-pdf', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+            showPopup(data.result);
+            showOptions();
+
+        });
+
+        async function performAction(action) {
+            // Show the loading spinner
+            document.getElementById('loading-spinner').classList.remove('hidden');
+            console.log("Hello")
+            try {
+                const response = await fetch(`/process-pdf/${action}`, {
+                    method: 'POST',
+                });
+                const data = await response.json();
+                document.getElementById('output').value = data.result;
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                document.getElementById('loading-spinner').classList.add('hidden');
+            }
+        }
+
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            popupMessage.textContent = message;
+            popup.classList.remove('hidden');
+            setTimeout(closePopup, 5000);
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.add('hidden');
+        }
+
+        function handleFileSelect(event) {
+            const fileInput = event.target;
+            const file = fileInput.files[0];
+
+            if (file) {
+                document.getElementById('file-name').textContent = file.name;
+                document.getElementById('file-details').classList.remove('hidden');
+            }
+        }
+
+        let utterance;
+        let isPaused = false;
+
+        function playText() {
+            const text = document.getElementById('output').value;
+            if (isPaused) {
+                speechSynthesis.resume();
+                isPaused = false;
+            } else {
+                if (utterance) {
+                    speechSynthesis.cancel();
+                }
+                utterance = new SpeechSynthesisUtterance(text);
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function pauseText() {
+            if (speechSynthesis.speaking && !speechSynthesis.paused) {
+                speechSynthesis.pause();
+                isPaused = true;
+            }
+        }
+
+        function stopText() {
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
+                isPaused = false;
+            }
+        }
+
+        function removeFile() {
+            window.location.reload();
+        }
+
+        document.getElementById('download-form').addEventListener('submit', function (event) {
+            const text = document.getElementById('output').value;
+            document.getElementById('hidden-text').value = text;
+        });
+
+
+        document.getElementById('submit-button').addEventListener('click', async function () {
+            const question = document.getElementById('question-input').value.trim();
+            if (question === '') {
+                showPopup('Please ENTER A QUESTION!');
+                return;
+            }
+            // Show the loading spinner
+            document.getElementById('loading-spinner').classList.remove('hidden');
+            try {
+                const response = await fetch('/ask-question', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question }),
+                })
+
+                const data = await response.json();
+                console.log(data.result)
+                document.getElementById('output').value = data.result;
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                document.getElementById('loading-spinner').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
