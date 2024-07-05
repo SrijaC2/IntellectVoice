@@ -9,6 +9,8 @@ from sentence_splitter import SentenceSplitter
 from gtts import gTTS
 from dotenv import load_dotenv
 from io import BytesIO
+import torch
+from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 
 load_dotenv()
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
@@ -25,8 +27,7 @@ os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-import torch
-from transformers import PegasusForConditionalGeneration, PegasusTokenizer
+
 model_name = 'tuner007/pegasus_paraphrase'
 torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
 tokenizer = PegasusTokenizer.from_pretrained(model_name)
