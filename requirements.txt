@@ -6,3 +6,4 @@ gtts
 python-dotenv
 torch
 transformers
+sentencepiece
