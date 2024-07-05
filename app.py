@@ -126,5 +126,4 @@ def extract_answer():
     result = llm.invoke(input_text)
     return jsonify({'result': result.content})
 
-if __name__ == '__main__':
-    app.run(debug=True,threaded=True)
+
