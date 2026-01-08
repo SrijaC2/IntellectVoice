@@ -31,6 +31,16 @@
 
 ---
 
+## Screenshots
+- Landing Page
+<img width="700" height="384" alt="Image" src="https://github.com/user-attachments/assets/cca1667d-64c0-472e-bee1-2f074f9cdf2e" />
+
+- File Upload
+<img width="700" height="520" alt="Image" src="https://github.com/user-attachments/assets/8e203082-8381-4ede-8faf-867b2a6edd4c" />
+
+- Query- Extract Keywords
+<img width="700" height="499" alt="Image" src="https://github.com/user-attachments/assets/97c8ccdb-8937-4a76-aa28-4aef158bb717" />
+
 ## 🛠️ Tech Stack
 
 ### Backend & AI
